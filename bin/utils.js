@@ -16,7 +16,7 @@ async function requestCompletion(text, key){
 
     return result; 
 } catch (error) {
-    console.error(error);
+    process.stderr.write(error);
     }
 }
 
@@ -45,7 +45,7 @@ async function createEnvFile(envPath) {
         });
       });
     } catch (error) {
-      console.error(error);
+      process.stderr.write(error);
     } finally {
       rl.close();
     }

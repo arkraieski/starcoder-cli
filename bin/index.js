@@ -38,8 +38,9 @@ yargs
     const apiKey = process.env.HF_API_KEY;
 
     const result = await requestCompletion(args._[0], apiKey);
-    console.log(result.generated_text);
-  } else {
+    process.stdout.write(result.generated_text);
+  } else { 
+    // code to run if -f is specified
     // Read the file and process its contents
     const fileContents = fs.readFileSync(args.file, 'utf8');
     const envFile = path.join(os.homedir(), '.starcoder-cli-env');
@@ -52,6 +53,6 @@ yargs
     const apiKey = process.env.HF_API_KEY;
 
     const result = await requestCompletion(fileContents, apiKey);
-    console.log(result.generated_text);
+    process.stdout.write(result.generated_text);
   }
 })();
