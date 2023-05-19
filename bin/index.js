@@ -38,7 +38,7 @@ yargs
     const apiKey = process.env.HF_API_KEY;
 
     const result = await requestCompletion(args._[0], apiKey);
-    process.stdout.write(result.generated_text);
+    process.stdout.write(result.generated_text + "\n");
   } else { 
     // code to run if -f is specified
     // Read the file and process its contents
@@ -53,6 +53,6 @@ yargs
     const apiKey = process.env.HF_API_KEY;
 
     const result = await requestCompletion(fileContents, apiKey);
-    process.stdout.write(result.generated_text);
+    process.stdout.write(result.generated_text + "\n");
   }
 })();
