@@ -12,6 +12,8 @@ Requires:
 - node.js
 - an account on the Hugging Face hub 🤗
 
+Steps:
+
 1. Accept the conditions for the [bigcode/starcoder](https://huggingface.co/bigcode/starcoder) model and create a personal access token if you do not already have one.
 2. Clone the repository and then navigate to it.
 3. Run ```npm install``` to install the dependencies.
