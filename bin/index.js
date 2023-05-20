@@ -15,7 +15,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 const yargs = require("yargs");
-const { requestCompletion, createEnvFile, handleCodeInput } = require("./utils");
+const { createEnvFile, handleCodeInput } = require("./utils");
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -51,7 +51,8 @@ async function main() {
     const apiKey = process.env.HF_API_KEY;
 
     handleCodeInput(args._[0], apiKey);
-  } else {
+  } else { // code to run if using a text file as input
+
     const fileContents = fs.readFileSync(args.file, 'utf8');
     const envFile = path.join(os.homedir(), '.starcoder-cli-env');
     const envResult = require('dotenv').config({ path: envFile });

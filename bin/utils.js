@@ -13,14 +13,14 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-module.exports = {requestCompletion, createEnvFile, handleCodeInput}
+module.exports = {createEnvFile, handleCodeInput}
 
 const HfInference = require("@huggingface/inference").HfInference;
 const fs = require('fs');
 const readline = require('readline');
 
 async function requestCompletion(text, key){
-    const hf = new HfInference(key); // make sure I move this later
+    const hf = new HfInference(key);
 
     try{
         
@@ -45,7 +45,7 @@ async function createEnvFile(envPath) {
   
     try {
       const apiKey = await new Promise((resolve) => {
-        rl.question('Please enter your API key: ', (apiKey) => {
+        rl.question('Please enter your Hugging Face API User Access Token: ', (apiKey) => {
           resolve(apiKey);
         });
       });
