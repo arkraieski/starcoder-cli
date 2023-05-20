@@ -13,7 +13,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-module.exports = {requestCompletion, createEnvFile}
+module.exports = {requestCompletion, createEnvFile, handleCodeInput}
 
 const HfInference = require("@huggingface/inference").HfInference;
 const fs = require('fs');
@@ -64,4 +64,9 @@ async function createEnvFile(envPath) {
     } finally {
       rl.close();
     }
+  }
+
+async function handleCodeInput(input, apiKey) {
+    const result = await requestCompletion(input, apiKey);
+    process.stdout.write(result.generated_text + "\n");
   }

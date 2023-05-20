@@ -14,16 +14,11 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-
-
-
-
 const yargs = require("yargs");
+const { requestCompletion, createEnvFile, handleCodeInput } = require("./utils");
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-
-const { requestCompletion, createEnvFile } = require("./utils");
 
 const usage = "\nUsage: starcode [options] <code to complete>";
 
@@ -37,11 +32,10 @@ yargs
   })
   .help();
 
-(async () => {
+async function main() {
   const args = await yargs.parse();
 
   if (!args.file) {
-    
     if (args._.length === 0) {
       yargs.showHelp();
       process.exit(1);
@@ -56,11 +50,8 @@ yargs
 
     const apiKey = process.env.HF_API_KEY;
 
-    const result = await requestCompletion(args._[0], apiKey);
-    process.stdout.write(result.generated_text + "\n");
-  } else { 
-    // code to run if -f is specified
-    // Read the file and process its contents
+    handleCodeInput(args._[0], apiKey);
+  } else {
     const fileContents = fs.readFileSync(args.file, 'utf8');
     const envFile = path.join(os.homedir(), '.starcoder-cli-env');
     const envResult = require('dotenv').config({ path: envFile });
@@ -71,7 +62,8 @@ yargs
 
     const apiKey = process.env.HF_API_KEY;
 
-    const result = await requestCompletion(fileContents, apiKey);
-    process.stdout.write(result.generated_text + "\n");
+    handleCodeInput(fileContents, apiKey);
   }
-})();
+}
+
+main();
