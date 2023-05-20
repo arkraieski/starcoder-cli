@@ -35,6 +35,16 @@ Options:
       --help     Show help                                             [boolean]
 
 ```
+For example:
+
+```
+~$ starcode "def print_hello_world():"
+def print_hello_world():
+    print("Hello World")
+
+def print_hello_world_twice():
+    print
+```
 
 ## License
 
