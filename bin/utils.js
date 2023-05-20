@@ -13,60 +13,57 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-module.exports = {createEnvFile, handleCodeInput}
+module.exports = { createEnvFile, handleCodeInput };
 
-const HfInference = require("@huggingface/inference").HfInference;
+const HfInference = require('@huggingface/inference').HfInference;
 const fs = require('fs');
 const readline = require('readline');
 
-async function requestCompletion(text, key){
-    const hf = new HfInference(key);
+async function requestCompletion (text, key) {
+  const hf = new HfInference(key);
 
-    try{
-        
+  try {
     const result = await hf.textGeneration({
-        model: "bigcode/starcoder",
-        inputs: text
+      model: 'bigcode/starcoder',
+      inputs: text
     });
 
-    return result; 
-} catch (error) {
+    return result;
+  } catch (error) {
     process.stderr.write(error);
-    }
+  }
 }
 
+async function createEnvFile (envPath) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
 
-
-async function createEnvFile(envPath) {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
+  try {
+    const apiKey = await new Promise((resolve) => {
+      rl.question('Please enter your Hugging Face API User Access Token: ', (apiKey) => {
+        resolve(apiKey);
+      });
     });
-  
-    try {
-      const apiKey = await new Promise((resolve) => {
-        rl.question('Please enter your Hugging Face API User Access Token: ', (apiKey) => {
-          resolve(apiKey);
-        });
-      });
-  
-      await new Promise((resolve, reject) => {
-        fs.writeFile(envPath, `API_KEY=${apiKey}`, (err) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        });
-      });
-    } catch (error) {
-      process.stderr.write(error);
-    } finally {
-      rl.close();
-    }
-  }
 
-async function handleCodeInput(input, apiKey) {
-    const result = await requestCompletion(input, apiKey);
-    process.stdout.write(result.generated_text + "\n");
+    await new Promise((resolve, reject) => {
+      fs.writeFile(envPath, `API_KEY=${apiKey}`, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+  } catch (error) {
+    process.stderr.write(error);
+  } finally {
+    rl.close();
   }
+}
+
+async function handleCodeInput (input, apiKey) {
+  const result = await requestCompletion(input, apiKey);
+  process.stdout.write(result.generated_text + '\n');
+}

@@ -14,25 +14,25 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-const yargs = require("yargs");
-const { createEnvFile, handleCodeInput } = require("./utils");
+const yargs = require('yargs');
+const { createEnvFile, handleCodeInput } = require('./utils');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const usage = "\nUsage: starcode [options] <code to complete>";
+const usage = '\nUsage: starcode [options] <code to complete>';
 
 yargs
   .usage(usage)
-  .option("f", {
-    alias: "file",
-    describe: "Specify a file to get text input from",
-    type: "string",
+  .option('f', {
+    alias: 'file',
+    describe: 'Specify a file to get text input from',
+    type: 'string',
     demandOption: false
   })
   .help();
 
-async function main() {
+async function main () {
   const args = await yargs.parse();
 
   if (!args.file) {
@@ -52,7 +52,6 @@ async function main() {
 
     handleCodeInput(args._[0], apiKey);
   } else { // code to run if using a text file as input
-
     const fileContents = fs.readFileSync(args.file, 'utf8');
     const envFile = path.join(os.homedir(), '.starcoder-cli-env');
     const envResult = require('dotenv').config({ path: envFile });
