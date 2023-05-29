@@ -86,4 +86,4 @@ Thank you to [BigCode project](https://www.bigcode-project.org/) for the model t
 ## Further Reading
 
 - [StarCoder model paper](https://arxiv.org/abs/2305.06161)
-- [HuggingFace.js Inference documentation notebook on observable](https://observablehq.com/@huggingface/hello-huggingface-js-inference)
+- [HuggingFace.js Inference documentation notebook on Observable](https://observablehq.com/@huggingface/hello-huggingface-js-inference)
