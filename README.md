@@ -63,7 +63,7 @@ Realistically, you'll probably want to use a source code file as the input inste
 You can also use shell pipes with the `starcode` command. For example, this command reads the generated code aloud on macOS:
 
 ```
-starcode -f new_example.py | say
+$ starcode -f new_example.py | say
 ```
   
 ## Contributing 🤝
