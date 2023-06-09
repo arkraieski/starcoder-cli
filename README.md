@@ -66,6 +66,13 @@ You can also use shell pipes with the `starcode` command. For example, this comm
 $ starcode -f new_example.py | say
 ```
   
+## Prompting Tips
+
+- The StarCoder model used by this CLI is a text-completion model and is **not** tuned for instruction following or chat
+- However, you may be able to use comments as a form of quasi-instructions that the model has exposure to from its training dataset
+- Refer to the model paper (see "Further Reading" section) for the authos' dicussion of the model's limitations
+- Code produced by this tool may have vulnerabilities or bugs
+
 ## Contributing 🤝
 
 Contributions are welcome and encouraged! Feel free to submit a PR if you have any improvements!
