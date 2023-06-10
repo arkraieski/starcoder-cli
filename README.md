@@ -13,7 +13,7 @@ This is an example of a simple CLI wrapper for the StarCoder code LLM using the 
 - Composable with other command-line tools using pipes, redirection, etc.
 
   
-## Installationx
+## Installation
 Requires:
 - git
 - node.js
@@ -27,8 +27,6 @@ Steps:
 4. Run ```npm install -g .``` to install the CLI.
 
 This installs the package globally. You will be prompted for your API token the first time you run the command.
-
-I will probably push this to npm once there's a good test suite and I set up CI.
   
 
 ## Usage
@@ -77,7 +75,9 @@ $ starcode -f new_example.py | say
 
 Contributions are welcome and encouraged! Feel free to submit a PR if you have any improvements!
 
-For now, I am using the [semistandard](https://github.com/standard/semistandard) npm package to check and fix style before my commits, and I ask other contributors to do the same (this may change in the future). Thank you in advance to anyone that wants to help with this project.
+For now, I am using [semistandard](https://github.com/standard/semistandard) to check and fix style issues (this may change in the future). 
+
+Thank you in advance to anyone that wants to help with this project.
 
   
 ## License
