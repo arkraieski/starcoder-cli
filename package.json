@@ -4,10 +4,11 @@
   "description": "A CLI wrapper for code generation using the Hugging Face inference API",
   "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "semistandard && mocha test/test.js"
   },
   "keywords": [
-    "cli"
+    "cli",
+    "ai"
   ],
   "bin": {
     "starcode": "./bin/index.js"
@@ -18,5 +19,15 @@
     "@huggingface/inference": "^2.3.3",
     "dotenv": "^16.0.3",
     "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "sinon": "^15.1.0",
+    "semistandard": "*"
+  },
+  "semistandard": {
+    "ignore": [
+      "test/test.js"
+    ]
   }
 }

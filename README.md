@@ -13,7 +13,7 @@ This is an example of a simple CLI wrapper for the StarCoder code LLM using the 
 - Composable with other command-line tools using pipes, redirection, etc.
 
   
-## Installation
+## Installationx
 Requires:
 - git
 - node.js
