@@ -3,30 +3,26 @@
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/standard/semistandard)
 
 
-This is an example of a simple CLI wrapper for the StarCoder code LLM using the Hugging Face inference api and wrapper library in node.js. This exposes the model's capabilities as a sort of high-tech "Unix tool" (referring to the philosophy, not the OS... this is a cross-platform project).
-
+This is an example of a simple CLI wrapper for the StarCoder code LLM using the Hugging Face inference api and wrapper library in node.js. This exposes the model's capabilities in a simple program inspired by old-school, text-based Unix tools and Github Copilot.
   
 ## Features
 
 - AI code generation at the command line! 
 - Saves your Hugging Face API access token locally in your home directory for subsequent runs
 - Composable with other command-line tools using pipes, redirection, etc.
+- it's free!
 
   
 ## Installation
 Requires:
-- git
-- node.js
+- Node.js >= 18
 - an account on the Hugging Face hub 🤗
 
 Steps:
 
 1. Accept the conditions for the [bigcode/starcoder](https://huggingface.co/bigcode/starcoder) model and create a personal access token if you do not already have one.
-2. Clone the repository and then navigate to it.
-3. Run ```npm install``` to install the dependencies.
-4. Run ```npm install -g .``` to install the CLI.
-
-This installs the package globally. You will be prompted for your API token the first time you run the command.
+2. Run ```npm install -g starcoder-cli``` to install the CLI globally
+3. You will be prompted for your API access token the first time you run the command (this will be stored locally for subsequent runs).
   
 
 ## Usage
@@ -57,6 +53,7 @@ Realistically, you'll probably want to use a source code file as the input inste
 ```
 ~$ starcode -f example.py > new_example.py
 ```
+(this may fail with larger input files)
 
 You can also use shell pipes with the `starcode` command. For example, this command reads the generated code aloud on macOS:
 
@@ -68,7 +65,7 @@ $ starcode -f new_example.py | say
 
 - The StarCoder model used by this CLI is a text-completion model and is **not** tuned for instruction following or chat
 - However, you may be able to use comments as a form of quasi-instructions that the model has exposure to from its training dataset
-- Refer to the model paper (see "Further Reading" section) for the authos' dicussion of the model's limitations
+- Refer to the model paper (see "Further Reading" section) for the authors' dicussion of the model's limitations
 - Code produced by this tool may have vulnerabilities or bugs
 
 ## Contributing 🤝
