@@ -1,6 +1,7 @@
 # starcoder-cli 🌟
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/standard/semistandard)
+[![npm version](https://badge.fury.io/js/starcoder-cli.svg)](https://badge.fury.io/js/starcoder-cli)
 
 
 This is an example of a simple CLI wrapper for the StarCoder code LLM using the Hugging Face inference api and wrapper library in node.js. This exposes the model's capabilities in a simple program inspired by old-school, text-based Unix tools and Github Copilot.
